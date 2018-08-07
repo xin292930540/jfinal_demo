@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <!--
+        path属性可以配置的目录有：
+        user.home（用户的家目录）
+        user.dir（用户当前的工作目录）
+        java.io.tmpdir（默认的临时目录）
+        ehcache.disk.store.dir（ehcache的配置目录）
+        绝对路径（如：d:\\ehcache）
+        子目录的话可以这样指定：user.home/ehcache。
+    -->
+    <diskStore path="user.dir"></diskStore>
+
+    <!--1）maxElementsInMemory（正整数）：
+
+    　　　　在内存中缓存的最大对象数量
+
+    　　　2）maxElementsOnDisk（正整数）：
+
+    　　　　在磁盘上缓存的最大对象数量，默认值为0，表示不限制。
+
+    　　　3）eternal：
+
+    　　　　设定缓存对象保存的永久属性，默认为 false 。当为 true 时 timeToIdleSeconds、timeToLiveSeconds 失效。
+
+    　　　4）timeToIdleSeconds（单位：秒）：
+
+    　　　　对象空闲时间，指对象在多长时间没有被访问就会失效。只对eternal为false的有效。默认值0，表示一直可以访问。
+
+    　　　5）timeToLiveSeconds（单位：秒）：
+
+    　　　　对象存活时间，指对象从创建到失效所需要的时间。只对eternal为false的有效。默认值0，表示一直可以访问。
+
+    　　　6）overflowToDisk：
+
+    　　　　如果内存中数据超过内存限制，是否要缓存到磁盘上。
+
+    　　  7）diskPersistent：
+
+    　　　　是否在磁盘上持久化。指重启jvm后，数据是否有效。默认为false。
+
+    　　  8）diskSpoolBufferSizeMB（单位：MB）：
+
+    　　　　DiskStore使用的磁盘大小，默认值30MB。每个cache使用各自的DiskStore。
+
+    　　  9）memoryStoreEvictionPolicy：
+
+    　　　　如果内存中数据超过内存限制，向磁盘缓存时的策略。默认值LRU，可选FIFO、LFU。
+    -->
+    <!-- 默认缓存配置 -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+    />
+
+    <!-- User缓存配置 -->
+    <cache
+            name="UserCache"
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+    />
+
+    <!-- User缓存配置 -->
+    <cache
+            name="blogPage"
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="300"
+            timeToLiveSeconds="600"
+            overflowToDisk="true"
+    />
+</ehcache>

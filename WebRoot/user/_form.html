@@ -1,0 +1,21 @@
+<fieldset class="solid">
+    <legend>创建User</legend>
+    <input type="hidden" name="user.id" value="#(user.id??)" />
+	<div>
+		<label>用户名</label>
+		<input type="text" name="user.uName" value="#(user.uName??)" />#(uNameMsg)
+	</div>
+	<div>
+		<label>密码</label>
+        <input type="password" name="user.pwd" value="#(user.pwd??)" />#(pwdMsg)
+	</div>
+    <div>
+        <label>性别</label>
+        <input type="radio" style="float: none;" name="user.sex" value="1" checked="checked"> 男
+        <input type="radio" style="float: none;" name="user.sex" value="0" > 女
+    </div>
+	<div>
+		<label>&nbsp;</label>
+		<input value="提交" type="submit">
+	</div>
+</fieldset>
